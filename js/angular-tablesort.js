@@ -60,9 +60,9 @@ tableSortModule.directive('tsWrapper', ['$parse', '$compile', function( $parse, 
                 getPageRangeString: function(total) {
                     //TODO: Format these numbers, perhaps optionally
                     var maxOnPage = total !== $scope.filtering.filteredCount ? $scope.filtering.filteredCount : total;
-                    var startPage = ($scope.pagination.currentPage - 1) * ($scope.pagination.perPage + 1);
+                    var startPage = ($scope.pagination.currentPage - 1) * ($scope.pagination.perPage + 1) + 1;
                     var endPage = Math.min($scope.pagination.currentPage * $scope.pagination.perPage, maxOnPage);
-                    return $scope.filtering.filteredCount === 0 ? "" : (startPage > 0 ? startPage + "-" : "") + endPage;
+                    return $scope.filtering.filteredCount === 0 ? "" : (endPage === maxOnPage ? "" : startPage + "-" ) + endPage;
                 }
             };
 
